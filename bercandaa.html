@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pesan Khusus Untuk Kak Adib 💌</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-family: 'Trebuchet MS', sans-serif;
+    color: #39302d;
+    background: linear-gradient(135deg, #fff9ed, #eeeaff, #e7f4ff);
+}
+
+.card {
+    width: 100%;
+    max-width: 600px;
+    padding: 40px 25px;
+    text-align: center;
+    background: rgba(255,255,255,.9);
+    border: 2px solid #f5dfa4;
+    border-radius: 30px;
+    box-shadow: 0 15px 40px #746b8130;
+    animation: masuk .7s ease;
+}
+
+.emoji {
+    font-size: 75px;
+    margin-bottom: 20px;
+    animation: goyang 2s infinite;
+}
+
+h1 {
+    font-size: clamp(28px, 6vw, 42px);
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+button {
+    padding: 14px 22px;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .2s;
+}
+
+button:hover {
+    transform: translateY(-4px) scale(1.04);
+}
+
+button:active {
+    transform: scale(.97);
+}
+
+.btn-utama {
+    background: #8588e8;
+    box-shadow: 0 5px 0 #686bc2;
+}
+
+.btn-maafin {
+    background: #80b99a;
+    box-shadow: 0 5px 0 #609778;
+}
+
+.btn-gamaafin {
+    background: #ee8e9b;
+    box-shadow: 0 5px 0 #c96f7c;
+}
+
+.tombol-pilihan {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+#halamanPrank,
+#hasil {
+    display: none;
+}
+
+#hasil {
+    margin-top: 25px;
+    padding: 20px;
+    background: #f0efff;
+    border-radius: 20px;
+    animation: masuk .5s ease;
+}
+
+.catatan {
+    margin-top: 30px;
+    color: #888;
+    font-size: 12px;
+}
+
+.bintang {
+    position: fixed;
+    font-size: 30px;
+    color: #a19bd8;
+    pointer-events: none;
+    animation: melayang 3s infinite ease-in-out;
+}
+
+.b1 { top: 10%; left: 8%; }
+.b2 { top: 15%; right: 8%; animation-delay: .5s; }
+.b3 { bottom: 10%; left: 12%; animation-delay: 1s; }
+.b4 { bottom: 12%; right: 10%; animation-delay: .7s; }
+
+@keyframes masuk {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes goyang {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg) translateY(-7px); }
+}
+
+@keyframes melayang {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="bintang b1">♡</div>
+<div class="bintang b2">✦</div>
+<div class="bintang b3">♡</div>
+<div class="bintang b4">✧</div>
+
+<div class="card">
+
+    <!-- HALAMAN AWAL -->
+    <div id="halamanAwal">
+        <div class="emoji">💌</div>
+        <h1>Hai, Kak Adib! 👀</h1>
+
+        <p>
+            Ada pesan penting buat kamu nih... <br>
+            Klik tombol di bawah!!!
+        </p>
+
+        <button class="btn-utama" onclick="bukaPesan()">
+            Klik iniii👆
+        </button>
+    </div>
+
+    <!-- HALAMAN PRANK -->
+    <div id="halamanPrank">
+        <div class="emoji">🐱👉</div>
+        <h1>ZONK! 🤣</h1>
+
+        <p>
+            WKWKWKWK 😭😭<br><br>
+
+            <strong>SELAMAT</strong>,
+            Kakak jgi korban iseng akuu wkwk 🤡
+            <br><br>
+
+            Nilai UTS Ekonomi Politik Asia Pasifik
+            yang tadi nilainya <strong>20</strong> itu
+            cuma bohong, wkwk kasian
+            <br><br>
+
+            Nah, sekarang pilih... kakak maafin aku ga? 🥹
+        </p>
+
+        <div class="tombol-pilihan">
+            <button class="btn-maafin" onclick="pilihMaaf('maafin')">
+                Maafin ❤️
+            </button>
+
+            <button class="btn-gamaafin" onclick="pilihMaaf('gamaafin')">
+                Ga Maafin 😡
+            </button>
+        </div>
+
+        <!-- HASIL KEDUA PILIHAN -->
+        <div id="hasil">
+            <div class="emoji" id="emojiHasil">🥹</div>
+            <h2 id="judulHasil">Yahhh! 😭</h2>
+            <p id="teksHasil"></p>
+            <button class="btn-utama" onclick="selesai()">
+                Iyaaa Miko
+            </button>
+        </div>
+    </div>
+
+    <div class="catatan">
+        🤍 
+    </div>
+
+</div>
+
+<script>
+function bukaPesan() {
+    document.getElementById("halamanAwal").style.display = "none";
+    document.getElementById("halamanPrank").style.display = "block";
+}
+
+function pilihMaaf(pilihan) {
+    const hasil = document.getElementById("hasil");
+    const emoji = document.getElementById("emojiHasil");
+    const judul = document.getElementById("judulHasil");
+    const teks = document.getElementById("teksHasil");
+
+    hasil.style.display = "block";
+
+    if (pilihan === "maafin") {
+        emoji.textContent = "🥹❤️";
+        judul.textContent = "YEYY, MAKASIH KAK ADIB hehe!";
+        teks.innerHTML =
+            "Kakak keren yg lagi pusing, sehat2 deh! <br><br>" ;
+    } else {
+        emoji.textContent = "😭👉👈";
+        judul.textContent = "APAAN PILIH INIII! 😭";
+        teks.innerHTML =
+            "Harus Maafin!!<br><br>";
+    }
+
+    hasil.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+    });
+}
+
+function selesai() {
+    document.getElementById("hasil").style.display = "none";
+
+    document.getElementById("halamanPrank").innerHTML = `
+        <div class="emoji">😹🤝😎</div>
+        <h1>PEACE, KAK ADIB! ✌️</h1>
+        <p>
+           Udah gitu aja hehe
+        </p>
+        <div style="font-size:55px;">🎉🐱💗</div>
+    `;
+}
+</script>
+
+</body>
+</html>
